@@ -13,7 +13,10 @@ const Modal = ({ icon, iconText, getFormData }) => {
 
   return (
     <div className={flag ? styles.active : ""}>
-      <button onClick={toggleBtn}>
+      <button
+        style={{ fontWeight: "700" }}
+        onClick={toggleBtn}
+      >
         {icon}
         {iconText}
       </button>
