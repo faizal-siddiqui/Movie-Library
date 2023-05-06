@@ -3,6 +3,7 @@ import {
   ADD_MOVIE,
   DELETE_MOVIE,
   GET_MOVIE,
+  GET_SINGLE_MOVIE,
   MOVIE_LOADING,
   UPDATE_MOVIE,
 } from "./movies.types";
@@ -35,7 +36,7 @@ export const addMovie = (newMovieData, toast) => async (dispatch) => {
   dispatch({ type: MOVIE_LOADING });
   try {
     //* calling api to add new movie data
-    const moviesData = await axios.post(`/movies`, {
+    await axios.post(`/movies`, {
       ...newMovieData,
     });
 
@@ -56,7 +57,7 @@ export const updateMovie =
     dispatch({ type: MOVIE_LOADING });
     try {
       //* calling api to updated  changes in movie data of id movieId
-      const moviesData = await axios.patch(`/movies/${movieId}`, {
+      await axios.patch(`/movies/${movieId}`, {
         ...changedData,
       });
 
@@ -76,11 +77,27 @@ export const deleteMovie = (movieId, toast) => async (dispatch) => {
   dispatch({ type: MOVIE_LOADING });
   try {
     //* calling api to delete movie of id movieId
-    const moviesData = await axios.patch(`/movies/${movieId}`);
+    await axios.delete(`/movies/${movieId}`);
 
     //* update the redux state with the updated Movies
     dispatch({ type: DELETE_MOVIE });
-    dispatch(getMovies("", toast, "Movie Data deleted"));
+    dispatch(getMovies("", toast, "Movie Deleted"));
+  } catch (err) {
+    //* Handling Error
+    console.log("err:", err);
+    toast.error(err.message);
+  }
+};
+
+export const getSingleMovie = (movieId, toast) => async (dispatch) => {
+  //* start Loading
+  dispatch({ type: MOVIE_LOADING });
+  try {
+    //* calling api to get movies data
+    const moviesData = await axios.get(`/movies/${movieId}`);
+
+    //* Updated the redux state with the movies
+    dispatch({ type: GET_SINGLE_MOVIE, payload: moviesData.data });
   } catch (err) {
     //* Handling Error
     console.log("err:", err);

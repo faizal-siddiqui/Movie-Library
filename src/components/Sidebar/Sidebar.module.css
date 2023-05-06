@@ -7,23 +7,19 @@
 }
 
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 /* * Adding styles on sidebar */
 .sidebar{
     background-color: var(--sidebar-color);
     width: 25%;
-    height: calc(100dvh - 70px);
     display: grid;
     grid-template-columns: 100%;
     position: fixed;
     top: 70px;
+    left: 0px;
+    height: calc(100dvh - 70px);
     transition: all 0.5s;
-    z-index: 500;
+    z-index: 100;
 }
 
 
@@ -49,7 +45,7 @@
 }
 
 /** when sort buttons selected*/
-.bgRed{
+.filter .bgRed{
     background-color: red;
 }
 
@@ -137,6 +133,7 @@
 @media all and (min-width: 481px) and (max-width: 768px){
     .sidebar{
         width: 50%;
+        height: 100vh;
     }
     
 

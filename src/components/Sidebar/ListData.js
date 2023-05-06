@@ -20,7 +20,7 @@ export const yearData = [...new Array(35)].map((el, index) => {
 
 //* year data used for adding options in select tag
 export const genreData = [
-  "All",
+  "",
   "Action",
   "Drama",
   "Horror",

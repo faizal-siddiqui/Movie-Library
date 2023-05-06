@@ -1,19 +1,21 @@
-import React, { useEffect } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import { Flex } from "./components/StyledComponents/styles";
-import Sidebar from "./components/Sidebar/Sidebar";
-import Movies from "./components/Movies/Movies";
-import { ToastContainer } from "react-toastify";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "./Pages/Home";
+import MovieDetail from "./Pages/MovieDetail";
 
 function App() {
   return (
-    <div>
-      <Navbar />
-      <Flex>
-        <Sidebar />
-        <Movies />
-      </Flex>
-      <ToastContainer />
+    <div className="App">
+      <Routes>
+        <Route
+          path="/"
+          element={<Home />}
+        />
+        <Route
+          path="/movies/:id"
+          element={<MovieDetail />}
+        />
+      </Routes>
     </div>
   );
 }

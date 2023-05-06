@@ -1,20 +1,16 @@
 import React, { useEffect } from "react";
 import styles from "./Movies.module.css";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { getMovies } from "../../Redux/movies.actions";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+
 import MovieCard from "./MovieCard";
 
-const Movies = () => {
-  const dispatch = useDispatch();
-
+const Movies = ({ fetchAllMovies }) => {
   //* accessing movies from redux state
   const { movies } = useSelector((state) => state);
 
   useEffect(() => {
-    //* calling the getMovie to get all the movie in the mounting phase
-    dispatch(getMovies("", toast));
+    //* calling the fetchAllMovies to get all the movie in the mounting phase
+    fetchAllMovies();
   }, []);
 
   return (

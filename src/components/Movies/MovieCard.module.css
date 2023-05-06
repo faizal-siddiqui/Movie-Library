@@ -1,14 +1,7 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 
 .movieCard{
     position: relative;
-    cursor: pointer;
-    top: 70px;
 }
 
 .movieCard img{
@@ -19,12 +12,14 @@
 .description{
     position: absolute;
     bottom: 0px;
+    left: 0px;
     backdrop-filter: blur(6px);
     width: 100%;
     height: 33%;
     border-radius: 10px;
     padding: 10px;
     color: #fff;
+    cursor: pointer;
 }
 
 .description p{
@@ -34,4 +29,17 @@
 
 .description h2{
     text-shadow: 1px 1px 2px rgb(170, 69, 69), 0 0 1em rgb(64, 64, 157), 0 0 0.2em blue;;
+}
+
+.separate{
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+}
+
+.separate button{
+   /* width: 30px;  */
+   font-size: 20px;
+   cursor: pointer;
 }

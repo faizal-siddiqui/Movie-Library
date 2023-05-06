@@ -2,6 +2,7 @@ import {
   ADD_MOVIE,
   DELETE_MOVIE,
   GET_MOVIE,
+  GET_SINGLE_MOVIE,
   MOVIE_ERROR,
   MOVIE_LOADING,
   UPDATE_MOVIE,
@@ -9,6 +10,7 @@ import {
 
 const initialState = {
   movies: [], //* for storing movies data
+  movie: {}, //* for storing single movie data
   loading: false,
   error: false,
 };
@@ -34,6 +36,13 @@ export const movieReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         movies: payload,
+        loading: false,
+      };
+    }
+    case GET_SINGLE_MOVIE: {
+      return {
+        ...state,
+        movie: payload,
         loading: false,
       };
     }
